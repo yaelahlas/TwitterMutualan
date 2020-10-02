@@ -107,8 +107,7 @@ const listUser = [
     "MUTUALANDFESS",
     "MUTUALANDFESS1",
     'menfesssyg', 
-    'subtanyarl2', 
-    'sygfess',
+    'subtanyarl2',
     'spongebobmnfess',
     'bacotfess',
     'sqwfess',
@@ -119,19 +118,19 @@ autoFollow === "ON" ? retweeters() : ''
 autoFollow === "ON" ? follow() : ''
 
 cron.schedule('*/5 * * * *', () => {
-    console.log(color('=== FIND MUTUAL IN BASE ===', 'green'))
+    console.log(color('=== FIND MUTUAL IN BASE TWITTER ===', 'green'))
     getTweets(listUser)
 });
 
 if (autoFollow === "ON") {
     cron.schedule('*/40 * * * *', () => {
-        console.log(color('=== AUTO FOLLOW RETWEETERS ===', 'green'))
+        console.log(color('=== AUTO FOLLOW TO RETWEETERS ===', 'green'))
         follow()
     });
 }
 
 cron.schedule('*/10 * * * *', async () => {
-    console.log(color('=== RESET DATABASE ===', 'green'))
+    console.log(color('=== PROCCES RESET DATABASE ===', 'green'))
     //Unretweet
     const retweetList = await db.getAllTweet()
     retweetList.forEach(async (retweets) => await client.post("statuses/unretweet/" + retweets.id).catch(error => error));
